@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmitterService } from '../shared/emitter.service';
 
 @Component({
   selector: 'app-first',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FirstComponent implements OnInit {
 
-  constructor() { }
+  constructor(private emitter: EmitterService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.emitter.event.subscribe(() => {
+      this.firstMethod()
+    })
+  }
+
+  firstMethod() {
+    alert("Ez az elsőből jön!")
   }
 
 }

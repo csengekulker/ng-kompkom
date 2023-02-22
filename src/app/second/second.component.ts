@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmitterService } from '../shared/emitter.service';
 
 @Component({
   selector: 'app-second',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecondComponent implements OnInit {
 
-  constructor() { }
+  constructor(private emitter: EmitterService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  callFirstMethod() {
+    this.emitter.onButtonClick()
   }
 
 }
